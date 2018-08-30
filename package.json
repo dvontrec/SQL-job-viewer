@@ -4,7 +4,8 @@
   "description": "Node Application used to view scraped jobs stored in a MySQL database",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

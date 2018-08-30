@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+		<div class="container">
+			<% jobs.forEach(job => { %>
+			<div class="card col-md-12 col-xs-4">
+				<div class="bg-light">
+					<p class="text-center text-primary"><%=job.title%></p>
+					<p class="text-center text-italic"><%=job.company%></p>
+					<p><%= job.summary%></p>
+				</div>
+				<div class="text-centered">
+					<a class="btn btn-info" href="<%=job.url%>" target="_blank">Indeed posting</a>
+					<% if(job.applied == 0){%>
+						<button class="btn">Apply?</button>
+					<%}%>
+					<button class="btn-danger" onclick="deleteJob(<%=job.id%>)">Delete</button>
+				</div>
+			</div>
+				
+			<% }) %>
+		</div>
+		<script type="text/javascript">
+			deleteJob = job =>{
+				alert(job);
+			}
+		</script>
+</body>
+</html>

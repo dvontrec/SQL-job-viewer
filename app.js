@@ -3,6 +3,8 @@ const express = require('express');
 const mysql = require('mysql');
 const app = express();
 
+app.set('view engine', 'ejs');
+
 let connection = mysql.createConnection({
 	host: process.env.DB_HOST,
 	user: process.env.DB_USERNAME,
@@ -11,11 +13,14 @@ let connection = mysql.createConnection({
 });
 
 app.get('/', (req, res) => {
+	res.send('welcome');
+});
+app.get('/getsql', (req, res) => {
 	// find all data in database
 	const query = 'SELECT * FROM Jobs';
 	connection.query(query, (error, results, fields) => {
 		if (error) throw error;
-		res.send(results);
+		res.render('jobs', { jobs: results });
 	});
 });
 

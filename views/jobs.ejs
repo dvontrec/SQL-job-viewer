@@ -18,18 +18,13 @@
 					<% if(job.applied == 0){%>
 						<button class="btn">Apply?</button>
 					<%}%>
-					<form action="/<%= job.id%>?_method=DELETE" method="POST">
-						<button class="btn-danger" onclick="deleteJob(<%=job.id%>)">Delete</button>
+					<form style="display: inline;" action="/<%= job.id%>?_method=DELETE" method="POST" onSubmit="return confirm('Are you sure you want to delete this job?');">
+						<button class="btn-danger">Delete</button>
 					</form>
 				</div>
 			</div>
 				
 			<% }) %>
 		</div>
-		<script type="text/javascript">
-			deleteJob = job =>{
-				alert(job);
-			}
-		</script>
 </body>
 </html>

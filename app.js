@@ -30,7 +30,7 @@ app.delete('/:id', (req, res) => {
 	const query = `DELETE from Jobs WHERE id = ${req.params.id}`;
 	connection.query(query, (error, results, fields) => {
 		if (error) throw error;
-		res.send('delete');
+		res.redirect('/getsql');
 	});
 });
 

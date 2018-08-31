@@ -3,6 +3,7 @@ const express = require('express');
 const mysql = require('mysql');
 const methodOverride = require('method-override');
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
@@ -34,6 +35,6 @@ app.delete('/:id', (req, res) => {
 	});
 });
 
-app.listen(3000, () => {
-	console.log('running on port 3000');
+app.listen(port, () => {
+	console.log('running on port ', port);
 });

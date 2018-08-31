@@ -16,9 +16,11 @@
 				<div class="text-centered">
 					<a class="btn btn-info" href="<%=job.url%>" target="_blank">Indeed posting</a>
 					<% if(job.applied == 0){%>
-						<button class="btn">Apply?</button>
+						<form style="display:inline;" action="/<%=job.id%>?_method=PUT" method="POST" >
+							<button class="btn">Apply?</button>
+						</form>
 					<%}%>
-					<form style="display: inline;" action="/<%= job.id%>?_method=DELETE" method="POST" onSubmit="return confirm('Are you sure you want to delete this job?');">
+					<form style="display: inline;" action="/<%=job.id%>?_method=DELETE" method="POST" onSubmit="return confirm('Are you sure you want to delete this job?');">
 						<button class="btn-danger">Delete</button>
 					</form>
 				</div>

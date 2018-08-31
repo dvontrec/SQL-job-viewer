@@ -35,6 +35,14 @@ app.delete('/:id', (req, res) => {
 	});
 });
 
+app.put('/:id', (req, res) => {
+	const query = `UPDATE Jobs SET applied = True WHERE id = ${req.params.id}`;
+	connection.query(query, (error, results, fields) => {
+		if (error) throw error;
+		res.redirect('/getsql');
+	});
+});
+
 app.listen(port, () => {
 	console.log('running on port ', port);
 });

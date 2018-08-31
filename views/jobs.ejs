@@ -18,7 +18,9 @@
 					<% if(job.applied == 0){%>
 						<button class="btn">Apply?</button>
 					<%}%>
-					<button class="btn-danger" onclick="deleteJob(<%=job.id%>)">Delete</button>
+					<form action="/<%= job.id%>?_method=DELETE" method="POST">
+						<button class="btn-danger" onclick="deleteJob(<%=job.id%>)">Delete</button>
+					</form>
 				</div>
 			</div>
 				

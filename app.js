@@ -1,8 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
+const methodOverride = require('method-override');
 const app = express();
 
+app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
 let connection = mysql.createConnection({
@@ -21,6 +23,14 @@ app.get('/getsql', (req, res) => {
 	connection.query(query, (error, results, fields) => {
 		if (error) throw error;
 		res.render('jobs', { jobs: results });
+	});
+});
+
+app.delete('/:id', (req, res) => {
+	const query = `DELETE from Jobs WHERE id = ${req.params.id}`;
+	connection.query(query, (error, results, fields) => {
+		if (error) throw error;
+		res.send('delete');
 	});
 });
 
